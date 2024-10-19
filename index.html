@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InvestiGrow - Learn the Stock Market</title>
+    <style>
+        @font-face {
+            font-family: 'PixelFont';
+            src: url('/path-to-your-pixel-font.woff2') format('woff2');
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'PixelFont', monospace;
+            height: 100%;
+        }
+
+        body {
+            background-image: url('bgm.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .pixelated-text {
+            image-rendering: pixelated;
+            -webkit-font-smoothing: none;
+        }
+
+        .pixelated-button {
+            image-rendering: pixelated;
+            box-shadow: 0 4px 0 #000;
+            border: 4px solid #000;
+            transform: translateY(-4px);
+            transition: transform 0.1s;
+            cursor: pointer;
+            font-family: 'PixelFont', monospace;
+        }
+
+        .pixelated-button:active {
+            transform: translateY(0);
+            box-shadow: 0 0 0 #000;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        .info-button {
+            background-color: #fbbf24;
+            color: black;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-style: italic;
+            font-weight: bold;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .auth-button {
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .login-button {
+            background-color: #3b82f6;
+        }
+
+        .signup-button {
+            background-color: #22c55e;
+        }
+
+        main {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: white;
+            margin-bottom: 0.5rem;
+            text-align: center;
+            color: #000;
+            padding-left: 15%;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: 2rem;
+        }
+
+        .welcome-text {
+            font-size: 2rem;
+            color: black;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .start-button {
+            background-color: #22c55e;
+            color: white;
+            padding: 1rem 2rem;
+            font-size: 1.5rem;
+        }
+
+        footer {
+            background-color: #1f2937;
+            color: white;
+            padding: 0.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .social-links {
+            display: flex;
+            align-items: center;
+            gap: 0.1rem;
+        }
+
+        .social-link {
+            color: white;
+            text-decoration: none;
+            width: 40%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="/learn-more" class="info-button pixelated-button" aria-label="Learn About Investing" style="font-size: larger;">
+            i
+            <span class="sr-only"></span>
+        </a>
+        <h1 class="pixelated-text">InvestiGrow</h1>
+        <div class="auth-buttons">
+            <a href="/login" class="auth-button login-button pixelated-button">
+                👤 Login
+            </a>
+            <a href="/signup" class="auth-button signup-button pixelated-button">
+                ➕ Sign Up
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <p class="subtitle pixelated-text" style="color: #22c55e; font-size: medium;"><b>Stock Market Made Easy!</b></p>
+        <button class="start-button pixelated-button">Start Game</button>
+    </main>
+
+    <footer>
+        <p>© 2024 InvestiGrow. All rights reserved.</p>
+        <div class="social-links">
+            <span>Contact Us:</span>
+            <a href="https://instagram.com/investigrow" target="_blank" rel="noopener noreferrer" class="social-link">
+                <img src="instagram-icon.png" alt="Instagram" class="social-icon" style="height: 30%; width: 30%;">
+            </a>
+            <a href="https://facebook.com/investigrow" target="_blank" rel="noopener noreferrer" class="social-link" >
+                <img src="meta-icon.png" alt="Meta" class="social-icon" style="height: 30%; width: 30%;">
+            </a>
+            <a href="mailto:contact@investigrow.com" class="social-link" >
+                <img src="gmail-icon.png" alt="Gmail" class="social-icon" style="height: 30%; width: 30%;">
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelector('.start-button').addEventListener('click', function() {
+            alert('Game starting! This is where you would initialize your game.');
+        });
+
+        document.querySelector('.info-button').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('This would take you to the learn more page.');
+        });
+
+        document.querySelectorAll('.auth-button').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                alert(`This would take you to the ${this.textContent.trim()} page.`);
+            });
+        });
+    </script>
+</body>
+</html>
