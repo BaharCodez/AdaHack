@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InvestiGrow - Investment Guidelines</title>
+    <style>
+        @font-face {
+            font-family: 'PixelFont';
+            src: url('/path-to-your-pixel-font.woff2') format('woff2');
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'PixelFont', monospace;
+            height: 100%;
+        }
+
+        body {
+            background-image: url('/bgm');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .pixelated-text {
+            image-rendering: pixelated;
+            -webkit-font-smoothing: none;
+        }
+
+        .pixelated-button {
+            image-rendering: pixelated;
+            box-shadow: 0 4px 0 #000;
+            border: 4px solid #000;
+            transform: translateY(-4px);
+            transition: transform 0.1s;
+            cursor: pointer;
+            font-family: 'PixelFont', monospace;
+        }
+
+        .pixelated-button:active {
+            transform: translateY(0);
+            box-shadow: 0 0 0 #000;
+        }
+
+        header {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        main {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .form-container {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 2rem;
+            border-radius: 1rem;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        input {
+            width: 100%;
+            padding: 0.5rem;
+            font-family: 'PixelFont', monospace;
+            border: 2px solid #000;
+        }
+
+        .go-button {
+            background-color: #22c55e;
+            color: white;
+            padding: 1rem 2rem;
+            font-size: 1.5rem;
+            width: 100%;
+        }
+
+        #result {
+            margin-top: 2rem;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 2rem;
+            border-radius: 1rem;
+            max-width: 500px;
+            width: 100%;
+            display: none;
+        }
+
+        footer {
+            background-color: #1f2937;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="pixelated-text">Investment Guidelines</h1>
+    </header>
+
+    <main>
+        <div class="form-container">
+            <form id="investmentForm">
+                <div class="form-group">
+                    <label for="stockSymbol">Stock Symbol:</label>
+                    <input type="text" id="stockSymbol" name="stockSymbol" required>
+                </div>
+                <div class="form-group">
+                    <label for="investmentAmount">Amount of Money Invested ($):</label>
+                    <input type="number" id="investmentAmount" name="investmentAmount" min="0" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label for="startDate">Start Date:</label>
+                    <input type="date" id="startDate" name="startDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="endDate">End Date:</label>
+                    <input type="date" id="endDate" name="endDate" required>
+                </div>
+                <button type="submit" class="go-button pixelated-button">GO</button>
+            </form>
+        </div>
+
+        <div id="result" class="pixelated-text">
+            <h2>Stock Projection Results</h2>
+            <p id="projectionResult"></p>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2024 InvestiGrow. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById('investmentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Collect form data
+            const stockSymbol = document.getElementById('stockSymbol').value;
+            const investmentAmount = document.getElementById('investmentAmount').value;
+            const startDate = document.getElementById('startDate').value;
+            const endDate = document.getElementById('endDate').value;
+
+            // In a real application, you would send this data to your server
+            // which would then use the YFinance API to get the projection
+            // For this example, we'll just show a placeholder result
+            const resultDiv = document.getElementById('result');
+            const projectionResult = document.getElementById('projectionResult');
+            
+            resultDiv.style.display = 'block';
+            projectionResult.textContent = `Projection for ${stockSymbol}: If you had invested $${investmentAmount} on ${startDate}, by ${endDate} it would be worth $${(investmentAmount * 1.5).toFixed(2)} (This is a placeholder result)`;
+        });
+    </script>
+</body>
+</html>
